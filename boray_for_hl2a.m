@@ -4,26 +4,27 @@ clear; clc;
 %% input wave parameters
 
 % wave parameters
-k_phi0 = 180:2:200;
+% k_phi0 = 180:2:200;
 
-f0 = ones(size(k_phi0))*(46); % GHz
+% f0 = ones(size(k_phi0))*(56); % GHz
+f0 = 56:2:66;
 num_f = size(f0,2); 
 dt0_guess = ones(size(f0))*0.001; 
 nt0_guess = ones(size(f0))*7000;
 
 r = ones(size(f0))*2.2;
 phih = ones(size(f0))*0;
-z = ones(size(f0))*(0);
+z = ones(size(f0))*(-0.13);
 % z = [-0.13 -0.14 -0.15 -0.16 -0.17];
 
 % k_guess0 = [ -2000,-300];
 k_theta0 = ones(size(f0))*(90);%度
-% k_phi0 = 180:2:200;
+k_phi0 = ones(size(f0))*180;
 
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
 icase = 2;
-eqfile = '../hl2a/input/eqdata.mat'; % put it in the './input/' directory
+eqfile = '../hl2a/input/genray_eqdata.mat'; % put it in the './input/' directory
 % eqfile = '../eqdata/genray/EAST/genray_eqdata.mat'; % put it in the './input/' directory
 savepath = '../hl2a/'; % '..' means from 'modules' directory
 
@@ -36,7 +37,7 @@ temprof(:,3)=0;
 yray0 = zeros(num_f,7);
 
 for i = 1:num_f
-    yray0(i,:) = [r(i),phih(i),z(i),-100,k_theta0(i),k_phi0(i),f0(i)];
+    yray0(i,:) = [r(i),phih(i),z(i),-50,k_theta0(i),k_phi0(i),f0(i)];
 %     yray0(i,:) = [2.2,0,-0.15,-600,nphi0(i),kz0(i),f0(i)];
 %     yray0(i,:) = [2.2,0,-0.03,-1.845e+03,0,-2.97e+02,f0(i)];
 end

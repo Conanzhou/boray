@@ -9,7 +9,7 @@ const=1;
 if const==1
 %     fname='g029300.00800';
 %     fname='g36866.860'; 
-    fname='g037869.01000';%孔栏位型
+    fname='g039350.00938';%孔栏位型
 %     fname='g037893.01000';%孔栏位型   
 else
  %out of region
@@ -200,6 +200,7 @@ dr=dR;
 dz=dZ;
 
 id0=find(fpsi==min(min(fpsi)));
+% id0=find(abs(fpsi-Psi_axis) < 1e-4);
 B0=fB(id0);
 R0=rr(id0);
 Z0=zz(id0);

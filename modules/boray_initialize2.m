@@ -22,11 +22,7 @@ if(jray==1)
     elseif(numeq==0) % 21-05-16 17:09 for Solovev analytical equilibrium
         run initialsolovev;
     end
-    
-    % wave frequency
-    w=2*pi*f; % rad/s
-    w2=w^2;
-    
+   
     if(~exist(savepath,'dir')) % in case savepath not exist
         mkdir(savepath);
     end
@@ -50,9 +46,15 @@ if(iexit)
     return;
 end
 
+    
+% wave frequency
+w=2*pi*f; % rad/s
+w2=w^2;
 %
 wcs=qs.*B./ms; % gyro frequency
+f_ce = wcs(1) / (-2*pi)
 wps2=ns0.*qs.^2./(epsilon0*ms);
+f_pe = sqrt(wps2(1)) / (2*pi)
 
 % eps1=S, eps2=D, eps3=P
 eps1=1-sum(wps2./(w2-wcs.^2));
