@@ -132,7 +132,7 @@ fclose(fid);
 % 定义密度剖面
 
 rho_bin = 0:0.005:1;
-densprof(:,1) = -2.5 * rho_bin .^2 +3.5;
+densprof(:,1) = -2.5 * rho_bin .^2 +2.5;
 densprof(:,2) = 0;
 densprof(:,3) = 0;
 
@@ -237,7 +237,7 @@ S=length(qs);
 save('genray_eqdata.mat','rg','zg','dr','dz','rr','zz',...
     'fB','fBr','fBz','fBphi','fns0','fts0','fdBdr','fdBdz',...
     'fdBrdr','fdBrdz','fdBzdr','fdBzdz','fdBphidr','fdBphidz',...
-    'fdns0dr','fdns0dz','qs','ms','R0','Z0','B0','n0','fpsi','S');
+    'fdns0dr','fdns0dz','qs','ms','R0','Z0','B0','n0','fpsi','S','rhorz');
 
 %% plot
 h=figure('unit','normalized','Position',[0.01 0.05 0.8 0.6],...
