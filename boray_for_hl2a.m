@@ -116,7 +116,7 @@ for jray = 1:nray
     plot(yy(:,1),yy(:,3),'.');
 end
 run ./kB.m
-ylim([0.0 0.05]);xlim([1.9 2.05])
+ylim([0.0 0.07]);xlim([1.9 2.05])
 figure(fig_rphi);
 run ./kB_rphi.m
 ylim([0.0 0.07]);xlim([1.9 2.05]);
