@@ -10,7 +10,7 @@ clear; clc;
 f0 = [56 56 56 56];
 num_f = size(f0,2); 
 dt0_guess = ones(size(f0))*0.001; 
-nt0_guess = ones(size(f0))*7000;
+nt0_guess = ones(size(f0))*1000;
 
 r = ones(size(f0))*2.2;
 phih = ones(size(f0))*0;
@@ -19,8 +19,16 @@ z = ones(size(f0))*(0);
 
 k_guess0 = [ -500,-2000,-2000,-2000];
 % k_theta0 = ones(size(f0))*(88);%度
+<<<<<<< HEAD
 k_theta0 = [88 87 86 85]-1;
 k_phi0 = ones(size(f0))*180;
+=======
+% k_theta0 = [88 87 86 85]-5;
+% k_theta0 = [84 83.9 83.5 82]+4;
+k_theta0 = [84 83.5 83.5 83.5]+4;
+% k_phi0 = ones(size(f0))*175;
+k_phi0 = [175 173 171  169];
+>>>>>>> a30d29f843cedd73c6d138c59f0c3b26dd90506b
 
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
@@ -104,11 +112,21 @@ for jray = 1:nray
         contour(rr,zz,rhorz,'LevelList',0:0.05:0.7);hold on;
         contour(rr,zz,rhorz,'LevelList',0.7:0.01:1.1);
         xlabel('R'); ylabel('Z');
-        title(['f=',num2str(f/1e9,4),'GHz']);
+        title(['f=',num2str(f/1e9,4),'GHz ','theta=',num2str(k_theta0(1))]);
 
     end
     figure(fig_rphi);
-    plot(yy(:,1).*cos(yy(:,2)),yy(:,1).*sin(yy(:,2)));
+    plot(yy(:,1).*cos(yy(:,2)),yy(:,1).*sin(yy(:,2)));%ylim([0.0 0.07]);xlim([1.9 2.05]);
     figure(fig_rz);
+<<<<<<< HEAD
     plot(yy(:,1),yy(:,3));
 end
+=======
+    plot(yy(:,1),yy(:,3),'.');
+end
+run ./kB.m
+ylim([0.0 0.05]);xlim([1.9 2.05])
+figure(fig_rphi);
+run ./kB_rphi.m
+ylim([0.0 0.07]);xlim([1.9 2.05]);
+>>>>>>> a30d29f843cedd73c6d138c59f0c3b26dd90506b
