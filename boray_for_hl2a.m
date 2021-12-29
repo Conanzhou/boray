@@ -20,10 +20,10 @@ z = ones(size(f0))*(0);
 k_guess0 = [ -500,-2000,-2000,-2000];
 % k_theta0 = ones(size(f0))*(88);%度
 % k_theta0 = [88 87 86 85]-5;
-% k_theta0 = [84 83.9 83.5 82]+4;
-k_theta0 = [84 83.5 83.5 83.5]+4;
-% k_phi0 = ones(size(f0))*175;
-k_phi0 = [175 173 171  169];
+k_theta0 = [84 83.9 83.5 82]+4;
+% k_theta0 = [84 83.5 83.5 83.5]+4;
+k_phi0 = ones(size(f0))*175;
+% k_phi0 = [175 173 171  169];
 
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
