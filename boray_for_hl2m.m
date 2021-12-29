@@ -12,7 +12,7 @@ num_f = size(f0,2);
 dt0_guess = ones(size(f0))*0.001; 
 nt0_guess = ones(size(f0))*1000;
 
-r = ones(size(f0))*2.2;
+r = ones(size(f0))*2.5;
 phih = ones(size(f0))*0;
 z = ones(size(f0))*(0);
 % z = [0 0.001 0.0015 0.002];
@@ -20,17 +20,17 @@ z = ones(size(f0))*(0);
 k_guess0 = [ -500,-2000,-2000,-2000];
 % k_theta0 = ones(size(f0))*(88);%度
 % k_theta0 = [88 87 86 85]-5;
-k_theta0 = [84 83.9 83.5 82]+4;
+k_theta0 = [84 83.9 83.5 82]-4;
 % k_theta0 = [84 83.5 83.5 83.5]+4;
-k_phi0 = ones(size(f0))*175;
+k_phi0 = ones(size(f0))*180;
 % k_phi0 = [175 173 171  169];
 
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
 icase = 2;
-eqfile = '../hl2a/input/genray_eqdata.mat'; % put it in the './input/' directory
+eqfile = '../hl2m/input/genray_eqdata.mat'; % put it in the './input/' directory
 % eqfile = '../eqdata/genray/EAST/genray_eqdata.mat'; % put it in the './input/' directory
-savepath = '../hl2a/'; % '..' means from 'modules' directory
+savepath = '../hl2m/'; % '..' means from 'modules' directory
 
 densprof(:,3)=0;
 temprof(:,3)=0;
@@ -47,7 +47,7 @@ for i = 1:num_f
 end
 %% calculate parameters
 
-% dt0_guess = [0.001 0.001]; nt0_guess = [700 2000];
+% dt0_guess = [0.001 0.001]; nt0_guess = [700 2000];a
 nray = size(yray0, 1);
 
 %% calculate
@@ -115,8 +115,8 @@ for jray = 1:nray
     figure(fig_rz);
     plot(yy(:,1),yy(:,3),'.');
 end
-run ./kB.m
-ylim([0.0 0.07]);xlim([1.9 2.05])
-figure(fig_rphi);
-run ./kB_rphi.m
-ylim([0.0 0.07]);xlim([1.9 2.05]);
+% run ./kB.m
+% ylim([0.0 0.07]);xlim([1.9 2.05])
+% figure(fig_rphi);
+% run ./kB_rphi.m
+% ylim([0.0 0.07]);xlim([1.9 2.05]);

@@ -4,17 +4,21 @@ clear; clc;
 %% equilibrium parameters
 
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
-eqfile = '../hl2a/input/genray_eqdata.mat'; % put it in the './input/' directory
-savepath = '../hl2a/output'; % '..' means from 'modules' directory
+eqfile = '../hl2m/input/genray_eqdata.mat'; % put it in the './input/' directory
+densprof(:,3)=0;
+temprof(:,3)=0;
+%% wave parameters
+
+savepath = '../hl2m/output'; % '..' means from 'modules' directory
 
 densprof(:,3)=0;
 temprof(:,3)=0;
 %% wave parameters
 
-f0 = 50:0.1:54; % GHz
+f0 = 40:0.5:80; % GHz
 % k_guess0 = [ -2000,-300];
 num_f = size(f0,2); 
-r00 = ones(size(f0))*2.2;
+r00 = ones(size(f0))*2.5;
 phih00 = ones(size(f0))*0;
 z00 = ones(size(f0))*(0);
 % z = [-0.13 -0.14 -0.15 -0.16 -0.17];
@@ -34,7 +38,7 @@ nray = size(yray0, 1);
 %% calculate
 disp('BO-Ray begins ray tracing.');
 for jray = 1:nray
-    %%
+    %%54
     r = yray0(jray, 1); phi = yray0(jray, 2); z = yray0(jray, 3);
     k_guess = yray0(jray, 4); k_theta = yray0(jray, 5); k_phi = yray0(jray, 6);
     f = yray0(jray,7)*1e9;

@@ -6,7 +6,7 @@ contour(rr,zz,rhorz,'LevelList',0.7:0.01:1.1);
 for j=1:nray
     plot(yyray(:,1,j),yyray(:,3,j));
 end
-ylim([0.0 0.03]);xlim([1.9 2.0])
+ylim([0.0 0.04]);xlim([2.3 2.4])
 TitleLabels('R-Z','','Z/m');set(gca,'xticklabel',[])
 run ./kB.m
 
@@ -16,7 +16,7 @@ plot(min(rg)*cos(tt),min(rg)*sin(tt),max(rg)*cos(tt),max(rg)*sin(tt));
 for j=1:nray
     plot(yyray(:,1,j).*cos(yyray(:,2,j)),yyray(:,1,j).*sin(yyray(:,2,j)));
 end
-ylim([0.0 0.07]);xlim([1.9 2.0])
+ylim([0.0 0.07]);xlim([2.3 2.4])
 TitleLabels('R-\Phi','R/m','\Phi/m');
 run ./kB_rphi.m
 
