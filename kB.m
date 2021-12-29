@@ -44,16 +44,16 @@ cross3_x = double(sol.x);
 cross3_y = double(sol.y);
 
 %% 
-o1_num = find(abs(o1y-cross1_y)<=5e-6);
-x1_num = find(abs(x1y-cross1_y)<=2e-6);
+o1_num = find(abs(o1y-cross1_y)<=1e-6);
+x1_num = find(abs(x1y-cross1_y)<=0.3e-6);
 % find(abs(o1y-cross_y)<=0.00001)
 x1_cross_ray = yyray(x1_num(1),:,1);
 o1_cross_ray = yyray(o1_num(1),:,2);
 quiver(o1_cross_ray(1),o1_cross_ray(3),o1_cross_ray(4)*2e-5,o1_cross_ray(6)*2e-5,'b','LineWidth',2);
 quiver(x1_cross_ray(1),x1_cross_ray(3),x1_cross_ray(4)*2e-5,x1_cross_ray(6)*2e-5,'r','LineWidth',2);
 %
-o2_num = find(abs(o2y-cross2_y)<=2e-6);
-x2_num = find(abs(x1y-cross2_y)<=1e-6);
+o2_num = find(abs(o2y-cross2_y)<=1.2e-6);
+x2_num = find(abs(x1y-cross2_y)<=0.3e-6);
 % find(abs(o2y-cross_y)<=0.00001)
 x2_cross_ray = yyray(x2_num(1),:,1);
 o2_cross_ray = yyray(o2_num(1),:,3);
@@ -61,7 +61,7 @@ quiver(o2_cross_ray(1),o2_cross_ray(3),o2_cross_ray(4)*2e-5,o2_cross_ray(6)*2e-5
 quiver(x2_cross_ray(1),x2_cross_ray(3),x2_cross_ray(4)*2e-5,x2_cross_ray(6)*2e-5,'r','LineWidth',2);
 %
 o3_num = find(abs(o3y-cross3_y)<=3e-6);
-x3_num = find(abs(x1y-cross3_y)<=2e-6);
+x3_num = find(abs(x1y-cross3_y)<=1.5e-6);
 % find(abs(o3y-cross_y)<=0.00001)
 x3_cross_ray = yyray(x3_num(1),:,1);
 o3_cross_ray = yyray(o3_num(1),:,4);

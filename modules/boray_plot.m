@@ -1,7 +1,7 @@
 % 2021-05-05 14:40 Huasheng XIE, huashengxie@gmail.com, ENN
 % boray_plot.m
 
-close all;
+% close all;
 h=figure('unit','normalized','Position',[0.01 0.05 0.6 0.6],...
     'DefaultAxesFontSize',14);
 
