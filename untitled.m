@@ -1,7 +1,7 @@
 % x1x,x1y,o1x,o1y
 [L,ind2]=deal(ones(length(x1x),1));
 for i=1000:length(x1x)
-    [L(i),ind2(i)]=leng([x1x(i)',x1y(i)'],[o1x',o1y']);
+    [L(i),ind2(i)]=leng([x1x(i),x1y(i)],[o1x,o1y]);
 end
 [~,ind]=min(L(:,1));
 
