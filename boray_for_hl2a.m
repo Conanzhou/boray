@@ -7,22 +7,26 @@ clear; clc;
 % k_phi0 = 180:2:200;
 
 % f0 = ones(size(k_phi0))*(56); % GHz
+% f0 = 38:1:48;
 f0 = [56 56 56 56];
 num_f = size(f0,2); 
 dt0_guess = ones(size(f0))*0.001; 
 nt0_guess = ones(size(f0))*1000;
 
 r = ones(size(f0))*2.2;
+% phih = ones(size(f0))*pi/2;
 phih = ones(size(f0))*0;
 z = ones(size(f0))*(0);
 % z = [0 0.001 0.0015 0.002];
 
 k_guess0 = [ -500,-2000,-2000,-2000];
-% k_theta0 = ones(size(f0))*(88);%度
+% k_guess0 = ones(size(f0)) * (-10);
+% k_theta0 = ones(size(f0))*(90);%度
 % k_theta0 = [88 87 86 85]-5;
 k_theta0 = [84 83.9 83.5 82]+4;
 % k_theta0 = [84 83.5 83.5 83.5]+4;
 % k_phi0 = ones(size(f0))*175;
+% k_phi0 = ones(size(f0))*180;
 k_phi0 = [175 173 171  169];
 
 % equilibrium parameters
@@ -101,7 +105,8 @@ for jray = 1:nray
         title(['r=',num2str(yy(1,1),3),', \phi=',num2str(yy(1,2),3),', z=',num2str(yy(1,3),3)]);
         
         plot(yy(1,1).*cos(yy(1,2)),yy(1,1).*sin(yy(1,2)),'rx','linewidth',2);
-        fig_rz=figure('unit','normalized','Position',[0.01 0.05 0.3 0.6],'DefaultAxesFontSize',14);hold on;
+%         fig_rz=figure('unit','normalized','Position',[0.01 0.05 0.3 0.6],'DefaultAxesFontSize',14);hold on;
+        fig_rz=figure;hold on;
 %         contour(rr,zz,fpsi,100);
         plot(yy(1,1),yy(1,3),'rx','linewidth',2);
         contour(rr,zz,rhorz,'LevelList',0:0.05:0.7);hold on;
@@ -115,8 +120,12 @@ for jray = 1:nray
     figure(fig_rz);
     plot(yy(:,1),yy(:,3),'.');
 end
-run ./kB.m
-ylim([0.0 0.07]);xlim([1.9 2.05])
-figure(fig_rphi);
-run ./kB_rphi.m
-ylim([0.0 0.07]);xlim([1.9 2.05]);
+% run ./kB.m
+% ylim([0.0 0.07]);xlim([1.9 2.05])
+% figure(fig_rphi);
+% run ./kB_rphi.m
+% ylim([0.0 0.07]);xlim([1.9 2.05]);
+run ./kb_plot.m
+%%
+% % k spectrum
+% run ./k_spectrum.m

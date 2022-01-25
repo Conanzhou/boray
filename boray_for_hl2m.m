@@ -5,25 +5,30 @@ clear; clc;
 
 % wave parameters
 % k_phi0 = 180:2:200;
-
+k_theta0 = 80:-0.1:78;
 % f0 = ones(size(k_phi0))*(56); % GHz
-f0 = [56 56 56 56];
+% f0 = 51:1:70;
+% f0 = [56 56 56 56];
+f0 = ones(size(k_theta0))*(56);
 num_f = size(f0,2); 
-dt0_guess = ones(size(f0))*0.001; 
-nt0_guess = ones(size(f0))*1000;
+dt0_guess = ones(size(f0))*0.001;
+nt0_guess = ones(size(f0))*1500;
 
 r = ones(size(f0))*2.5;
 phih = ones(size(f0))*0;
 z = ones(size(f0))*(0);
 % z = [0 0.001 0.0015 0.002];
 
-k_guess0 = [ -500,-2000,-2000,-2000];
-% k_theta0 = ones(size(f0))*(88);%度
+% k_guess0 = [ -500,-2000,-2000,-2000];
+k_guess0 = [ -500 -2000*ones(1,num_f)];
+% k_guess0 = ones(size(f0)) * (-10);
+% k_theta0 = ones(size(f0))*(85);%度
 % k_theta0 = [88 87 86 85]-5;
-k_theta0 = [84 83.9 83.5 82]-4;
+% k_theta0 = [84 83.9 83.5 82]-4;
 % k_theta0 = [84 83.5 83.5 83.5]+4;
-k_phi0 = ones(size(f0))*180;
-% k_phi0 = [175 173 171  169];
+% k_phi0 = ones(size(f0))*180;
+k_phi0 = ones(size(f0))*174;
+% k_phi0 = [175 172 171  169];
 
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
@@ -120,3 +125,5 @@ end
 % figure(fig_rphi);
 % run ./kB_rphi.m
 % ylim([0.0 0.07]);xlim([1.9 2.05]);
+%%
+% run ./k_spectrum.m

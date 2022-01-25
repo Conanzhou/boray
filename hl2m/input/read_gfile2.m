@@ -187,7 +187,12 @@ R0=rr(id0);
 Z0=zz(id0);
 nn0=squeeze(nsrz0(1,:,:));
 n0=nn0(id0);
-
+figure;
+plot(rr(:,floor(id0/nz)+1),nn0(:,floor(id0/nz)+1),'LineWidth',3);
+TitleLabels '' 'R' 'ne(m^{-3}'
+yyaxis right;
+plot(rr(:,floor(id0/nz)+1),fB(:,floor(id0/nz)+1),'LineWidth',3);
+TitleLabels 'ne and B' 'R' 'B(T)'
 %%
 % qe=1.60217662e-19; % electron charge, coulombs
 % mp=1.6726219e-27; % proton mass, kg

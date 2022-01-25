@@ -56,6 +56,8 @@ f_ce = wcs(1) / (-2*pi);
 wps2=ns0.*qs.^2./(epsilon0*ms);
 f_pe = sqrt(wps2(1)) / (2*pi);
 
+f_xr=(sqrt(wcs(1).^2/4+wps2(1))-wcs(1)/2) / (2*pi); 
+
 % eps1=S, eps2=D, eps3=P
 eps1=1-sum(wps2./(w2-wcs.^2));
 eps2=sum((wcs./w).*wps2./(w2-wcs.^2));
