@@ -1,14 +1,13 @@
 figure;
-subplots(2,1,1);
+% subplots(2,1,1);
+subplots(1,3,1);
+set(gca,'DataAspectRatio',[1 1 1])
 hold on;
 plot(yyray(1,1,1),yyray(1,3,1),'rx','linewidth',2);
 contour(rr,zz,rhorz,'LevelList',0:0.05:0.7);hold on;
 contour(rr,zz,rhorz,'LevelList',0.7:0.01:1.1);
-plot(yyray(1,1,1),yyray(1,3,1),'rx','linewidth',2);
-for j=1:nray
-    plot(yyray(:,1,j),yyray(:,3,j));
-end
-ylim([0.02 0.03]);xlim([2.35 2.40])
+plot(yyray(:,1,1),yyray(:,3,1),'b','linewidth',2);
+
 %%
 num_x = length(yyray(:,1,1));
 [point_rz_x,point_rz_o] = deal(ones(nray,1));
@@ -24,7 +23,9 @@ for j=2:nray
     end
     [~,point_rz_x(j)] = min(L(:,1));
     point_rz_o(j) = ind2(point_rz_x(j));
-
+    
+    plot(yyray(1:point_rz_o(j),1,j),yyray(1:point_rz_o(j),3,j),'r','linewidth',2);
+    
     rz_output_rho(j-1,1) = interp2(rr',zz',rhorz',yyray(point_rz_x(j),1,1),yyray(point_rz_x(j),3,1));
     rz_output_rho(j-1,2) = interp2(rr',zz',rhorz',yyray(point_rz_o(j),1,j),yyray(point_rz_o(j),3,j));
     rz_output_k_r(j-1,1) = yyray(point_rz_x(j),4,1);
@@ -34,12 +35,13 @@ for j=2:nray
     rz_output_k_z(j-1,1) = yyray(point_rz_x(j),6,1);
     rz_output_k_z(j-1,2) = -1*yyray(point_rz_o(j),6,j);
 
-    quiver(yyray(point_rz_x(j),1,1),yyray(point_rz_x(j),3,1),yyray(point_rz_x(j),4,1)*2e-5,yyray(point_rz_x(j),6,1)*2e-5,'b','LineWidth',2);
-    quiver(yyray(point_rz_o(j),1,j),yyray(point_rz_o(j),3,j),-1*yyray(point_rz_o(j),4,j)*2e-5,-1*yyray(point_rz_o(j),6,j)*2e-5,'r','LineWidth',2);
+    quiver(yyray(point_rz_x(j),1,1),yyray(point_rz_x(j),3,1),yyray(point_rz_x(j),4,1)*2e-5,yyray(point_rz_x(j),6,1)*2e-5,'b','LineWidth',3);
+    quiver(yyray(point_rz_o(j),1,j),yyray(point_rz_o(j),3,j),-1*yyray(point_rz_o(j),4,j)*2e-5,-1*yyray(point_rz_o(j),6,j)*2e-5,'r','LineWidth',3);
 end
+
 % ylim([0.0 0.03]);xlim([1.9 2.0])
 % ylim([0.0 0.04]);xlim([2.3 2.45])
-TitleLabels('R-Z','R/m','Z/m');%set(gca,'xticklabel',[])
+TitleLabels('(a)CPS,k_B = k_O-k_X','R/m','Z/m');%set(gca,'xticklabel',[])
 % run ./kB.m
 %%
 rz_kb_rho = (rz_output_rho(:,1)+rz_output_rho(:,2))/2;

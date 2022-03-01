@@ -5,16 +5,19 @@ clear; clc;
 
 % wave parameters
 % k_phi0 = 180:2:200;
-k_theta0 = 80:-0.1:78;
+% k_theta0 = 75:-1:70;
+k_theta0 = [75 74:-5:49];
 % f0 = ones(size(k_phi0))*(56); % GHz
 % f0 = 51:1:70;
 % f0 = [56 56 56 56];
-f0 = ones(size(k_theta0))*(56);
+% f0 = ones(size(k_theta0))*(56);
+f0 = ones(size(k_theta0))*(65);
 num_f = size(f0,2); 
 dt0_guess = ones(size(f0))*0.001;
-nt0_guess = ones(size(f0))*1500;
+nt0_guess = ones(size(f0))*1750;
 
-r = ones(size(f0))*2.5;
+% r = ones(size(f0))*2.5;
+r = ones(size(f0))*2.6;
 phih = ones(size(f0))*0;
 z = ones(size(f0))*(0);
 % z = [0 0.001 0.0015 0.002];
@@ -27,7 +30,7 @@ k_guess0 = [ -500 -2000*ones(1,num_f)];
 % k_theta0 = [84 83.9 83.5 82]-4;
 % k_theta0 = [84 83.5 83.5 83.5]+4;
 % k_phi0 = ones(size(f0))*180;
-k_phi0 = ones(size(f0))*174;
+k_phi0 = ones(size(f0))*175;
 % k_phi0 = [175 172 171  169];
 
 % equilibrium parameters
