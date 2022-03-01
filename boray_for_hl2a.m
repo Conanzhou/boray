@@ -88,7 +88,7 @@ for jray = 1:nray
     runtime1 = cputime;
     disp(['Begin to calculate the ray tracing use cold', ...
             ' plasma dispersion relation.']);
-    run ./modules/boray_rk4;
+    run ./modules/boray_rk4_SZH;
     yyray(:, :, jray) = yy;
     runtime1 = cputime - runtime1;
     disp(['Finish the ray tracing calculation. Runtime=', ...
