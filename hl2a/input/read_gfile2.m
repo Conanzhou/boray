@@ -132,7 +132,16 @@ fclose(fid);
 % 定义密度剖面
 
 rho_bin = 0:0.005:1;
-densprof(:,1) = -2.5 * rho_bin .^2 +2.5;
+% densprof(:,1) = -2.5 * rho_bin .^2 +2.5;
+
+S = load('D:\Users\darkest\OneDrive - mails.tsinghua.edu.cn\SWIP\Document\Experiment\CPS\220319_CPS波迹计算\FMCW\38106A_50_1579.mat');
+time = 1000;
+ind = find(abs(S.t-time)<0.1);
+rho_p = ([S.R(ind,2:end) Raxis]-Raxis) ./ (S.R(ind,2)-Raxis);
+ne = [S.ne(2:end) S.ne(end)]/1e19;
+densprof(:,1) = interp1(rho_p,ne,rho_bin);
+
+
 densprof(:,2) = 0;
 densprof(:,3) = 0;
 
@@ -194,6 +203,9 @@ TitleLabels '' 'R' 'ne(m^{-3}'
 yyaxis right;
 plot(rr(:,floor(id0/nz)+1),fB(:,floor(id0/nz)+1),'LineWidth',3);
 TitleLabels 'ne and B' 'R' 'B(T)'
+%%
+
+
 %%
 % qe=1.60217662e-19; % electron charge, coulombs
 % mp=1.6726219e-27; % proton mass, kg
