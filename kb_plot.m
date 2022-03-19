@@ -1,10 +1,11 @@
 figure;
 % subplots(2,1,1);
-subplots(1,3,1);
-set(gca,'DataAspectRatio',[1 1 1])
+% subplots(1,3,1);
+% set(gca,'DataAspectRatio',[1 1 1])
 hold on;
 plot(yyray(1,1,1),yyray(1,3,1),'rx','linewidth',2);
 contour(rr,zz,rhorz,'LevelList',0:0.05:0.7);hold on;
+contour(rr,zz,rhorz,'LevelList',0.7:0.01:1.1);
 contour(rr,zz,rhorz,'LevelList',0.7:0.01:1.1);
 plot(yyray(:,1,1),yyray(:,3,1),'b','linewidth',2);
 
