@@ -6,7 +6,7 @@ clear; clc;
 % wave parameters
 % k_phi0 = 180:2:200;
 k_theta0 = 100:-1:80;
-f0 = ones(size(k_theta0))*(45); % GHz
+f0 = ones(size(k_theta0))*(50); % GHz
 % f0 = ones(size(k_phi0))*(56); % GHz
 % f0 = 38:1:48;
 % f0 = [56 56 56 56];
@@ -21,7 +21,7 @@ z = ones(size(f0))*(0);
 % z = [0 0.001 0.0015 0.002];
 
 % k_guess0 = [ -500,-2000,-2000,-2000];
-k_guess0 = ones(size(f0)) * (-10);
+k_guess0 = ones(size(f0)) * (-20);
 % k_theta0 = ones(size(f0))*(90);%度
 % k_theta0 = [88 87 86 85]-5;
 % k_theta0 = [84 83.9 83.5 82]+4;
@@ -90,6 +90,7 @@ for jray = 1:nray
     disp(['Begin to calculate the ray tracing use cold', ...
             ' plasma dispersion relation.']);
     run ./modules/boray_rk4_SZH;
+%     run ./modules/boray_rk4;
     yyray(:, :, jray) = yy;
     runtime1 = cputime - runtime1;
     disp(['Finish the ray tracing calculation. Runtime=', ...

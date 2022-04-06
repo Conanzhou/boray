@@ -15,7 +15,7 @@ densprof(:,3)=0;
 temprof(:,3)=0;
 %% wave parameters
 
-f0 = 29:1:51; % GHz
+f0 = 20:0.5:35; % GHz
 % k_guess0 = [ -2000,-300];
 num_f = size(f0,2); 
 r00 = ones(size(f0))*2.2;

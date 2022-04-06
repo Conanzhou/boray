@@ -5,7 +5,7 @@ const=1;
 if const==1
 %     fname='g029300.00800';
 %     fname='g36866.860'; 
-    fname='g039350.00938';%孔栏位型
+    fname='g038102.01350';%孔栏位型
 %     fname='g037893.01000';%孔栏位型   
 else
  %out of region
@@ -134,9 +134,9 @@ fclose(fid);
 rho_bin = 0:0.005:1;
 % densprof(:,1) = -2.5 * rho_bin .^2 +2.5;
 
-S = load('D:\Users\darkest\OneDrive - mails.tsinghua.edu.cn\SWIP\Document\Experiment\CPS\220319_CPS波迹计算\FMCW\38106A_50_1579.mat');
-time = 1000;
-ind = find(abs(S.t-time)<0.1);
+S = load('38102A_50_2230.mat');
+time = 1350;
+ind = find(abs(S.t-time)<0.09);
 rho_p = ([S.R(ind,2:end) Raxis]-Raxis) ./ (S.R(ind,2)-Raxis);
 ne = [S.ne(2:end) S.ne(end)]/1e19;
 densprof(:,1) = interp1(rho_p,ne,rho_bin);
