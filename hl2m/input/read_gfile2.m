@@ -180,6 +180,7 @@ tsrz0(isnan(tsrz0))=0.0;
 dr=dR;
 dz=dZ;
 
+%%
 % id0=find(fpsi==min(min(fpsi)));
 id0=find(abs(fpsi-Psi_axis) < 1e-5);
 B0=fB(id0);
@@ -193,6 +194,13 @@ TitleLabels '' 'R' 'ne(m^{-3}'
 yyaxis right;
 plot(rr(:,floor(id0/nz)+1),fB(:,floor(id0/nz)+1),'LineWidth',3);
 TitleLabels 'ne and B' 'R' 'B(T)'
+
+%%
+% 计算中平面截至频率
+w_rr = rr(:,floor(id0/nz)+1);
+w_ne = nn0(:,floor(id0/nz)+1);
+w_Bt = fB(:,floor(id0/nz)+1);
+Freqs_xzy(w_rr',w_ne',w_Bt');
 %%
 % qe=1.60217662e-19; % electron charge, coulombs
 % mp=1.6726219e-27; % proton mass, kg
