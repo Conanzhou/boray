@@ -13,6 +13,7 @@ clear; clc;
 % f0 = [60:2.5:70 60:2.5:70];
 % f0 = [60:2.5:70 60:2.5:70];
 f0 = [52:1:65 52:1:65];
+% f0 = [52 65 52 65];
 % f0 = [56 56 56 56];
 % f0 = ones(size(k_theta0))*(56);
 % f0 = ones(size(k_theta0))*(65);
@@ -30,12 +31,12 @@ z = [ones([1 num_f/2])*(-0.158) ones([1 num_f/2])*(0.158)];
 % k_guess0 = [ -500,-2000,-2000,-2000];
 % k_guess0 = [ -500 -2000*ones(1,num_f)];
 % k_guess0 = ones(size(f0)) * (-10);
-k_guess0 = [ones([1 num_f/2])*(-10) ones([1 num_f/2])*(-20)];
+k_guess0 = [ones([1 num_f/2])*(-10) ones([1 num_f/2])*(-2000)];
 % k_theta0 = ones(size(f0))*(85);%度
 % k_theta0 = [88 87 86 85]-5;
 % k_theta0 = [84 83.9 83.5 82]-4;
 % k_theta0 = [84 83.5 83.5 83.5]+4;
-k_theta0 = [ones([1 num_f/2])*(90) ones([1 num_f/2])*(90)];
+k_theta0 = [ones([1 num_f/2])*(100) ones([1 num_f/2])*(135)];
 k_phi0 = ones(size(f0))*180;
 % k_phi0 = ones(size(f0))*175;
 % k_phi0 = [175 172 171  169];
@@ -125,7 +126,8 @@ for jray = 1:nray
 %         contour(rr,zz,squeeze(fns0(1,:,:)),100);
         contour(rr,zz,squeeze(fns0(1,:,:)),'LevelList',(0.6:0.01:2)*1e19);
         xlabel('R'); ylabel('Z');box on;
-        title(['f=',num2str(f/1e9,4),'GHz ','theta=',num2str(k_theta0(1))]);
+%         title(['f=',num2str(f/1e9,4),'GHz ','theta=',num2str(k_theta0(1))]);
+        title(['f=52:1:65GHz ','theta=',num2str(k_theta0(1)-90)]);
 
     end
     figure(fig_rphi);
