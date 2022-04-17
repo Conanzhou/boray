@@ -19,7 +19,7 @@ for i=1:num_f
 %         kper_down_ne(i) = yyray(ind,18,i);
 end
 % k_output(:,:,6) = sqrt((k_output(:,:,1)-R0).^2+(k_output(:,:,3)-Z0).^2)/a;%rho
-save([savepath,'k_output_DBS_L_down.mat'],'k_output');
+save([savepath,'k_output_DBS_H_up.mat'],'k_output');
 %%
 figure;hold on;box on;
 for j = 1:num_theta
@@ -27,12 +27,16 @@ for j = 1:num_theta
 end
 legend(string(90-k_theta0(1:num_theta))+"^o");
 TitleLabels '' 'Freq/GHz' 'k_{\perp}/cm^{-1}'
+xlim([49 70]);
+saveas(gcf,[savepath,'kper~f.fig']);
 figure;hold on;box on;
 for j = 1:num_theta
     plot(f0,2*k_output(:,j,2)/100,'-o');
 end
 legend(string(90-k_theta0(1:num_theta))+"^o");
 TitleLabels '' 'Freq/GHz' 'k_{//}/cm^{-1}'
+xlim([49 70]);
+saveas(gcf,[savepath,'kparl~f.fig']);
 %%
 figure;hold on;box on;
 for j = 1:num_f
@@ -40,13 +44,14 @@ for j = 1:num_f
 end
 legend(string(f0(1:num_f))+"GHz");
 TitleLabels '' 'theta' 'k_{\perp}/cm^{-1}'
+saveas(gcf,[savepath,'kper~theta.fig']);
 figure;hold on;box on;
 for j = 1:num_f
     plot(90-k_theta0,2*k_output(j,:,2)/100,'-o');
 end
 legend(string(f0(1:num_f))+"GHz");
 TitleLabels '' 'theta' 'k_{//}/cm^{-1}'
-
+saveas(gcf,[savepath,'kparl~theta.fig']);
 % figure;hold on;box on;
 % for j = 6:5:num_f
 %     plot(90-k_theta0,k_output(j,:,1)/100,'-o');

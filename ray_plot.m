@@ -8,8 +8,8 @@
         contour(rr,zz,squeeze(fns0(1,:,:)),'LevelList',(0.6:0.01:2)*1e19);
         xlabel('R'); ylabel('Z');box on;
         
-        num_theta = 1;
-        num_f = 7;
+%         num_theta = 6;
+%         num_f = 4;
         for i = 1:num_f
             for j = 1:num_theta
                 temp_num = (i-1)*num_theta+j;

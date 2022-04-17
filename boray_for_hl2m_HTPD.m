@@ -4,12 +4,13 @@ clear; clc;
 
 % input wave parameters
 % f0 = 50:2.5:65;
-f0 = 20:2.5:35;
+% f0 = 20:2.5:35;
+f0 = 50:1:65;
 % f0 = 51;
 % k_theta0 = 35:5:130;%度,范围选取，基于平衡位型，基本相切,down
 % k_theta0 = 40:5:145;%度,范围选取，基于平衡位型，基本相切,up
 % k_theta0 = 35:10:145;%度,范围选取，基于平衡位型，基本相切,中平面
-k_theta0 = 90;
+k_theta0 = 35:5:145;
 
 num_f = size(f0,2); 
 num_theta = size(k_theta0,2); 
@@ -21,7 +22,7 @@ nt0_guess = ones(num_f*num_theta)*2100;
 r = ones(num_f*num_theta)*2.63842;
 phih = ones(num_f*num_theta)*0;
 % z = ones(num_f*num_theta)*(0.158);
-z = ones(num_f*num_theta)*(0);
+z = ones(num_f*num_theta)*(0.158);
 % z = [ones([1 num_f/2])*(-0.158) ones([1 num_f/2])*(0.158)];
 % z = [0 0.001 0.0015 0.002];
 
@@ -42,10 +43,10 @@ k_phi0 = ones(num_f*num_theta)*180;
 % equilibrium parameters
 numeq = 1; % =0, analytical equilibrium; =1, numerical equilibrium
 icase = 2;
-eqfile = '../hl2m/input/L_mode/genray_eqdata.mat'; % put it in the './input/' directory
-% eqfile = '../hl2m/input/genray_eqdata.mat'; % put it in the './input/' directory
+% eqfile = '../hl2m/input/L_mode/genray_eqdata.mat'; % put it in the './input/' directory
+eqfile = '../hl2m/input/genray_eqdata.mat'; % put it in the './input/' directory
 % eqfile = '../eqdata/genray/EAST/genray_eqdata.mat'; % put it in the './input/' directory
-savepath = './hl2m/output/L_mode/O-mode/down/'; % '..' means from 'modules' directory
+savepath = './hl2m/output/H_mode/O-mode/up/'; % '..' means from 'modules' directory
 
 densprof(:,3)=0;
 temprof(:,3)=0;
