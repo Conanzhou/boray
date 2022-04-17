@@ -1,7 +1,8 @@
 %%
 % num_Freq = size(yyray,3)/2;
 
-k_output = zeros(num_f,num_theta,6);
+% k_output = zeros(num_f,num_theta,6);
+k_output = zeros(num_f,num_theta,8);
 for i=1:num_f
     for j = 1:num_theta
         temp_num = (i-1)*num_theta+j;
@@ -10,6 +11,8 @@ for i=1:num_f
         k_output(i,j,3) = min(yyray(ind,18,temp_num));%ne
         k_output(i,j,4) = min(yyray(ind,1,temp_num));%r
         k_output(i,j,5) = min(yyray(ind,3,temp_num));%z
+        k_output(i,j,7) = min(yyray(ind,4,temp_num));%z
+        k_output(i,j,8) = min(yyray(ind,6,temp_num));%z
     end
 %         [kper_min_down(i),ind] = min(yyray(:,16,i));
 %         kper_down_kparl(i) = yyray(ind,15,i);
@@ -19,6 +22,7 @@ for i=1:num_f
 %         kper_down_ne(i) = yyray(ind,18,i);
 end
 % k_output(:,:,6) = sqrt((k_output(:,:,1)-R0).^2+(k_output(:,:,3)-Z0).^2)/a;%rho
+%%
 save([savepath,'k_output_DBS_H_up.mat'],'k_output');
 %%
 figure;hold on;box on;
