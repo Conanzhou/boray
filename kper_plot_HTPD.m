@@ -51,37 +51,67 @@ for j = 1:num_f
 end
 legend(string(f0(1:num_f))+"GHz");
 TitleLabels '' 'theta' 'k_{//}/cm^{-1}'
-saveas(gcf,[savepath,'kparl~theta.fig']);
-% figure;hold on;box on;
-% for j = 6:5:num_f
-%     plot(90-k_theta0,k_output(j,:,1)/100,'-o');
-% end
-% legend(string(f0(6:5:num_f))+"GHz");
-% TitleLabels '' 'theta' 'k_{\perp}/cm^{-1}'
-% figure;hold on;box on;
-% for j = 6:5:num_f
-%     plot(90-k_theta0,k_output(j,:,2)/100,'-o');
-% end
-% legend(string(f0(6:5:num_f))+"GHz");
-% TitleLabels '' 'theta' 'k_{//}/cm^{-1}'
+
+
 %%
-% figure;
-% subplots(4,1,1);
-% plot(f0(1:num_Freq),2*kper_min_down /100,'-o');hold on;
-% plot(f0(1:num_Freq),2*kper_min_up /100,'-s');
-% TitleLabels '' 'Freq/GHz' 'k_{\perp}/cm^{-1}'
-% subplots(4,1,2);
-% plot(f0(1:num_Freq),2*kper_down_kparl /100,'-o');hold on;
-% plot(f0(1:num_Freq),2*kper_up_kparl /100,'-s');
-% TitleLabels '' 'Freq/GHz' 'k_{//}/cm^{-1}'
-% subplots(4,1,3);
-% plot(f0(1:num_Freq),kper_down_B,'-o');hold on;
-% plot(f0(1:num_Freq),kper_up_B,'-s');
-% TitleLabels '' 'Freq/GHz' 'B/T'
-% subplots(4,1,4);
-% plot(f0(1:num_Freq),kper_down_ne/1e19,'-o');hold on;
-% plot(f0(1:num_Freq),kper_up_ne/1e19,'-s');
-% TitleLabels '' 'Freq/GHz' 'ne/\times 19 m^{-3}'
-% 
-% xlim([51 66]);
-% link x;
+k_rr = k_output(:,:,4);
+k_zz = k_output(:,:,5);
+k_output(:,:,6) = interp2(rr',zz',rhorz',k_rr,k_zz);
+figure;hold on;box on;
+for j = 1:num_theta
+    plot(k_output(:,j,6),2*k_output(:,j,1)/100,'-o');
+end
+legend(string(90-k_theta0(1:num_theta))+"^o");
+TitleLabels '' '\rho' 'k_{\perp}/cm^{-1}'
+for j = 1:num_f
+    plot(k_output(j,:,6),2*k_output(j,:,1)/100,'-o');
+end
+
+%%
+figure;axes;hold on
+% H=plot(k_output(:,:,6)',2*k_output(:,:,1)'/100,'-o');
+
+plot(k_output(:,1:12,6),2*k_output(:,1:12,1)/100,'-');
+plot(k_output(:,23:-1:12,6),2*k_output(:,23:-1:12,1)/100,'-');
+H=plot(k_output(:,1:12,6)',2*k_output(:,1:12,1)'/100,'-o');
+plot(k_output(:,23:-1:12,6)',2*k_output(:,23:-1:12,1)'/100,'-*');
+plot([0.9 0.9],[0 25]);
+legend(H,string(f0)+"GHz")
+TitleLabels 'ne=4.5e19,Bt=1.8T,Up Window' '\rho' 'k_{\perp}/cm^{-1}'
+xlim([0.2 1.01]);
+
+% plot(k_output(:,1:12,6),2*k_output(:,1:12,1)/100,'-');
+% plot(k_output(:,20:-1:12,6),2*k_output(:,20:-1:12,1)/100,'-');
+% H=plot(k_output(:,1:12,6)',2*k_output(:,1:12,1)'/100,'-o');
+% plot(k_output(:,20:-1:12,6)',2*k_output(:,20:-1:12,1)'/100,'-');
+% plot([0.9 0.9],[0 25]);
+% legend(H,string(f0)+"GHz")
+% TitleLabels 'ne=4.5e19,Bt=1.8T,Middle Window' '\rho' 'k_{\perp}/cm^{-1}'
+% xlim([0.8 1.01]);
+%%
+figure;axes;hold on
+% plot(k_output(:,1:11,6),2*k_output(:,1:11,1)/100,'-o');
+
+% plot(k_output(:,21:-1:11,6),2*k_output(:,21:-1:11,2)/100,'-o');
+% plot(k_output(:,1:11,6)',2*k_output(:,1:11,2)'/100,'-o');
+% H=plot(k_output(:,21:-1:11,6)',2*k_output(:,21:-1:11,2)'/100,'-o');
+% plot([0.9 0.9],[-6 6]);
+% legend(H,string(f0)+"GHz")
+
+plot(k_output(:,1:12,6),2*k_output(:,1:12,2)/100,'-');
+plot(k_output(:,23:-1:12,6),2*k_output(:,23:-1:12,2)/100,'-');
+H=plot(k_output(:,1:12,6)',2*k_output(:,1:12,2)'/100,'-o');
+plot(k_output(:,23:-1:12,6)',2*k_output(:,23:-1:12,2)'/100,'-');
+plot([0.9 0.9],[-6 6]);
+legend(H,string(f0)+"GHz")
+TitleLabels 'ne=4.5e19,Bt=1.8T,Up Window' '\rho' 'k_{\perp}/cm^{-1}'
+xlim([0.2 1.01]);
+
+% plot(k_output(:,1:12,6),2*k_output(:,1:12,2)/100,'-');
+% plot(k_output(:,20:-1:12,6),2*k_output(:,20:-1:12,2)/100,'-');
+% H=plot(k_output(:,1:12,6)',2*k_output(:,1:12,2)'/100,'-o');
+% plot(k_output(:,20:-1:12,6)',2*k_output(:,20:-1:12,2)'/100,'-');
+% plot([0.9 0.9],[-6 6]);
+% legend(H,string(f0)+"GHz")
+% TitleLabels 'ne=4.5e19,Bt=1.8T,Middle Window' '\rho' 'k_{//}/cm^{-1}'
+% xlim([0.8 1.01]);
